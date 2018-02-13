@@ -1,23 +1,24 @@
 {
-  "name": "express-rcp",
+  "name": "express-game",
   "version": "1.0.0",
-  "description": "RESTful API to manage Recipes",
+  "description": "RESTful API to manage Games",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node .",
-    "seed": "node db/seed.js"
+    "start": "node ."
   },
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.1",
-    "mongoose": "^5.0.3",
+    "mongoose": "^5.0.4",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.1",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.5.0"
+    "passport-local-mongoose": "^4.5.0",
+    "socket.io": "^2.0.4",
+    "socketio-jwt-auth": "^0.0.6"
   },
   "devDependencies": {
     "superagent": "^3.8.2"

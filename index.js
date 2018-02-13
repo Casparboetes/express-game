@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const passport = require('./config/auth')
 const cors = require('cors')
-const { recipes, users, sessions } = require('./routes')
+const { games, users, sessions } = require('./routes')
 
 const port = process.env.PORT || 3030
 
@@ -13,7 +13,7 @@ app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(passport.initialize())
-  .use(recipes)
+  .use(games)
   .use(users)
   .use(sessions)
 
