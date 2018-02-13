@@ -1,19 +1,31 @@
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const passport = require('./config/auth')
-const cors = require('cors')
 const { games, users, sessions } = require('./routes')
+const http = require('http')
+const socketAuth = require('./config/socket-auth')
+const socketIO = require('socket.io')
 
 const port = process.env.PORT || 3030
 
-let app = express()
+const app = express()
+const server = http.Server(app)
+const io = socketIO(server)
+
+io.use(socketAuth)
+
+io.on('connect', socket =>{
+  socket.emit('ping', `Welcome to the server, ${socket.request.user.name}`)
+  console.log(`${socket.request.user.name}, connect to the server`)
+})
 
 app
   .use(cors()) // Add a CORS config in there
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(passport.initialize())
-  .use(games)
+  .use(games(io))
   .use(users)
   .use(sessions)
 
