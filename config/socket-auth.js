@@ -1,5 +1,5 @@
 const io = require('socket.io')()
-const jwtAuth = require('socketop-jwt-auth')
+const jwtAuth = require('socketio-jwt-auth')
 const jwtOptions = require('./jwt')
 const { User } = require('../models')
 

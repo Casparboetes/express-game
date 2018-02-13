@@ -25,7 +25,7 @@ app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(passport.initialize())
-  .use(games(io))
+  .use(games)
   .use(users)
   .use(sessions)
 
